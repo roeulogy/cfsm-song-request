@@ -8,4 +8,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY SongsMasterGrid.csv SongsMasterGrid.csv
 COPY app/ app/     # ⬅️ The fix: directly copy the `app/` folder
 
-CMD ["python", "app/main.py"]
+CMD ["python", "main.py"]
