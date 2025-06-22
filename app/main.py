@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
-from songs_loader import load_songs
-from queue import ...
-
+from app.songs_loader import load_songs
+from app.queue import add_to_queue, get_queue, clear_queue
 
 import os
 
