@@ -5,10 +5,6 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app/ app/
-COPY SongsMasterGrid.csv SongsMasterGrid.csv
+COPY . .
 
-# Make sure Python can find `app` as a package
-ENV PYTHONPATH=/app
-
-CMD ["python", "-m", "app.main"]
+CMD ["python", "main.py"]
