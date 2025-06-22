@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Song Request App</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 30px; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background-color: #f4f4f4; }
+        .queue { background-color: #e9ffe9; padding: 10px; margin-bottom: 20px; }
+        .btn { padding: 4px 10px; text-decoration: none; border: 1px solid #000; background: #ddd; }
+    </style>
+</head>
+<body>
+    <h1>Available Songs</h1>
+    <div class="queue">
+        <h2>Current Queue</h2>
+        <ul>
+        {% for item in queue %}
+            <li>{{ item['Artist'] }} – {{ item['Title'] }}</li>
+        {% else %}
+            <li>No songs in queue.</li>
+        {% endfor %}
+        </ul>
+        <a class="btn" href="{{ url_for('clear') }}">Clear Queue</a>
+    </div>
+    <table>
+        <tr>
+            <th>Artist</th>
+            <th>Title</th>
+            <th>Album</th>
+            <th>Year</th>
+            <th>Length (s)</th>
+            <th>Request</th>
+        </tr>
+        {% for song in songs %}
+        <tr>
+            <td>{{ song['Artist'] }}</td>
+            <td>{{ song['Title'] }}</td>
+            <td>{{ song['Album'] }}</td>
+            <td>{{ song['Release Year'] }}</td>
+            <td>{{ song['Song Length (seconds)'] }}</td>
+            <td><a class="btn" href="{{ url_for('request_song', i=loop.index0) }}">Request</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
